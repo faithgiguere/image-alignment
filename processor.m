@@ -19,23 +19,14 @@ for i = 1:numel(image_files)
     G = fullim(height+1:height*2,:);
     R = fullim(height*2+1:height*3,:);
 
-    % Display image overlay before shifting
-    BG = cat(3, B, G);
-    BGR = cat(3, BG, R);
-
     % Find best displacements
     % If smaller than 500KB, can use single scale align
     if image_files(i).bytes < MULTI_SCALE_THRESHOLD
-        G_disp = single_scale_align(G,B);
-        R_disp = single_scale_align(R,B);
+        [B, G, R] = single_scale_align(B, G, R);
     else
         G_disp = multi_scale_align(G,B);
         R_disp = multi_scale_align(R,B);
     end
-
-    % Shift images by best displacements
-    G = circshift(G, G_disp);
-    R = circshift(R, R_disp);
 
     % Get new composite image
     BG = cat(3, B, G);
