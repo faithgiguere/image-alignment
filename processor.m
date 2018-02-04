@@ -24,8 +24,7 @@ for i = 1:numel(image_files)
     if image_files(i).bytes < MULTI_SCALE_THRESHOLD
         [B, G, R] = single_scale_align(B, G, R);
     else
-        G_disp = multi_scale_align(G,B);
-        R_disp = multi_scale_align(R,B);
+        [B, G, R] = multi_scale_align(B, G, R);
     end
 
     % Get new composite image
