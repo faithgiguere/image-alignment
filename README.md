@@ -1,2 +1,1 @@
-# vision-project-1
-Project 1 for Computer Vision class.
+Project 1 for Computer Vision class. Using images from the Prokudin-Gorskii digitized photo collection, this project consists of taking three color channel images and aligning them to create a single RGB color image. Both single-scale and multi-scale aligning algorithms were implemented.
